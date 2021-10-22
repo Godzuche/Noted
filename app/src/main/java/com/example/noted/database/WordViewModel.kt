@@ -18,6 +18,6 @@ class WordViewModelFactory (private val repository: WordRepository) : ViewModelP
             @Suppress("UNCHECKED_CAST")
             return WordViewModel(repository) as T
         }
-        throw IllegalArgumentException("Unknown ViewModel Class")
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

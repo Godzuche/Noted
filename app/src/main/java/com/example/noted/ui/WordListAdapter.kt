@@ -3,13 +3,13 @@ package com.example.noted
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noted.database.Word
 
-class WordListAdapter: androidx.recyclerview.widget.ListAdapter<Word, WordViewHolder>(WordsComparator()) {
+class WordListAdapter: ListAdapter<Word, WordViewHolder>(WordsComparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         return WordViewHolder.create(parent)
     }
@@ -21,9 +21,9 @@ class WordListAdapter: androidx.recyclerview.widget.ListAdapter<Word, WordViewHo
 }
 
 class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val wordItemView: TextView = itemView.findViewById(R.id.textView)
+    private val wordTextview: TextView = itemView.findViewById(R.id.textView)
     fun bind(text: String) {
-        wordItemView.text = text
+        wordTextview.text = text
     }
 
     companion object {
