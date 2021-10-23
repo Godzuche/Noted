@@ -3,17 +3,15 @@ package com.example.noted
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.noted.database.Word
 import com.example.noted.database.WordViewModel
 import com.example.noted.database.WordViewModelFactory
 import com.example.noted.databinding.ActivityMainBinding
@@ -42,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        wordsViewModel.allWord.observe(this, Observer { words ->
+        wordsViewModel.allWords.observe(this, Observer { words ->
             words?.let { adapter.submitList(it) }
         })
 
@@ -57,11 +55,17 @@ class MainActivity : AppCompatActivity() {
         // The parseResult will return this as String?
         if (result.resultCode == Activity.RESULT_OK) {
             val data = result.data //.getStringExtra(NewWordActivity.EXTRA_REPLY)
-            val resultExtra = data?.getStringExtra(NewWordActivity.EXTRA_REPLY)
-            Toast.makeText(this, "Result: $resultExtra", Toast.LENGTH_LONG).show()
+            val wordExtra = data?.getStringExtra(NewWordActivity.EXTRA_REPLY).also {
+                it?.let {
+                    val word = Word(it)
+                    wordsViewModel.insert(word)
+                }
+            }
+
+            Toast.makeText(this, "Result: $wordExtra", Toast.LENGTH_LONG).show()
         }
         else
-            Toast.makeText(this, "No Result", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, R.string.empty_not_saved, Toast.LENGTH_LONG).show()
 
         // For custom Contracts
 //        if (result != null) //
