@@ -1,16 +1,16 @@
-package com.example.noted
+package com.example.noted.ui
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.noted.R
+import com.example.noted.WordListAdapter
 import com.example.noted.database.Word
 import com.example.noted.database.WordViewModel
 import com.example.noted.database.WordViewModelFactory
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     //request code
-    private val newWordActivityRequestCode = 1
+//    private val newWordActivityRequestCode = 1
 
     // create the ViewModel instance
     private val wordsViewModel: WordViewModel by viewModels {
@@ -73,10 +73,11 @@ class MainActivity : AppCompatActivity() {
 
 }
 
+/*
 class NewWordActivityContract: ActivityResultContract<Int, String?>() {
     override fun createIntent(context: Context, input: Int?): Intent {
         return Intent(context, NewWordActivity::class.java).apply {
-            putExtra("my_input_key", input)
+            putExtra(NewWordActivity.REQUEST_CODE, input)
         }
     }
 
@@ -88,3 +89,4 @@ class NewWordActivityContract: ActivityResultContract<Int, String?>() {
             null
     }
 }
+*/

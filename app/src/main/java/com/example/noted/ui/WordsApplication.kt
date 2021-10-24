@@ -1,4 +1,4 @@
-package com.example.noted
+package com.example.noted.ui
 
 import android.app.Application
 import com.example.noted.database.WordRepository

@@ -1,4 +1,4 @@
-package com.example.noted
+package com.example.noted.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -31,6 +31,7 @@ class NewWordActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
+//        const val REQUEST_CODE = "com.example.noted.ui.NewWordActivity.CODE"
+        const val EXTRA_REPLY = "com.example.noted.ui.NewWordActivity.REPLY"
     }
 }
