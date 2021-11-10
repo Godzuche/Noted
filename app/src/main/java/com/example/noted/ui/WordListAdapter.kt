@@ -1,4 +1,4 @@
-package com.example.noted
+package com.example.noted.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.noted.R
 import com.example.noted.database.Word
 
 class WordListAdapter: ListAdapter<Word, WordViewHolder>(WordsComparator()) {

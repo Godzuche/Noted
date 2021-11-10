@@ -10,7 +10,6 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noted.R
-import com.example.noted.WordListAdapter
 import com.example.noted.database.Word
 import com.example.noted.database.WordViewModel
 import com.example.noted.database.WordViewModelFactory
